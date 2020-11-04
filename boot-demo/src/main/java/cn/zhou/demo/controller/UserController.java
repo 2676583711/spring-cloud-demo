@@ -64,14 +64,13 @@ public class UserController {
             model.addAttribute("msg", "该用户名:" + user.getUsername() + ",已经被注册...");
             return "register";
         }
-        if (!PasswordCheck.isContainLetter(user.getPassword())) {
-            model.addAttribute("msg", "密码需要包含字母...");
+        String s = checkPassword(user.getPassword());
+        if (s != null) {
+            model.addAttribute("msg", s);
             return "register";
         }
-        if (!PasswordCheck.isContainDigit(user.getPassword())) {
-            model.addAttribute("msg", "密码需要包含数字...");
-            return "register";
-        }
+
+
         try {
             userService.addUser(user);
             model.addAttribute("msg", "注册成功,可以去登陆了...");
@@ -79,5 +78,18 @@ public class UserController {
             model.addAttribute("msg", "网络异常，注册失败...");
         }
         return "register";
+    }
+
+    public String checkPassword(String password) {
+
+        if (!PasswordCheck.isContainLetter(password)) {
+//            model.addAttribute("msg", "密码需要包含字母...");
+            return "密码需要包含字母...";
+        }
+        if (!PasswordCheck.isContainDigit(password)) {
+//            model.addAttribute("msg", "密码需要包含数字...");
+            return "密码需要包含数字...";
+        }
+        return null;
     }
 }
