@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/user.css"/>
+</head>
+<body>
+
+<div class="show">
+    <h2>Login</h2>
+    <br/>
+    <form method="post" action="/login">
+        <input name="username" type="text" placeholder="账号"/><br/>
+        <input name="password" type="password" placeholder="密码"/><br/>
+        <input type="submit" value="登录"/>
+        <input type="button" value="注册" onclick="goToRegister()"/>
+    </form>
+</div>
+
+</body>
+<script>
+    function goToRegister() {
+        window.location.href = '/goToRegister';
+    }
+</script>
+</html>

@@ -1,0 +1,9 @@
+.show {
+    /*display: flex;*/
+    width: auto;
+    height: 300px;
+    text-align: center;
+    /*height: auto;*/
+    background: aquamarine;
+    /*margin: 0 auto;*/
+}
