@@ -81,6 +81,9 @@ public class UserController {
     }
 
     public String checkPassword(String password) {
+        if (password.length() <= 6) {
+            return "密码最少6位...";
+        }
 
         if (!PasswordCheck.isContainLetter(password)) {
 //            model.addAttribute("msg", "密码需要包含字母...");
