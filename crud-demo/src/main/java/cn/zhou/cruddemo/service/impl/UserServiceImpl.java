@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findUser(User user) {
-
+        System.out.println("查询params::" + user);
         if (user != null) {
             List arrayList = new ArrayList();
             if (user.getId() != null) {
@@ -84,10 +84,27 @@ public class UserServiceImpl implements UserService {
                 return arrayList;
             }
             if (user.getUsername() != null) {
-                List<User> userByUsername = userDao.findUsersByNicknameLike(user.getUsername());
-                return userByUsername;
+                List<User> userByUsername = userDao.findUsersByUsernameLike(user.getUsername());
+                if (userByUsername.size() > 0) {
+                    return userByUsername;
+                } else {
+                    userByUsername = userDao.findUsersByNicknameLike(user.getUsername());
+                    if (userByUsername.size() > 0) {
+                        return userByUsername;
+                    } else {
+                        userByUsername = userDao.findUsersByPasswordLike(user.getUsername());
+                        if (userByUsername.size() > 0) {
+                            return userByUsername;
+                        } else {
+                            userByUsername = userDao.findUsersBySexLike(user.getUsername());
+                            if (userByUsername.size() > 0) {
+                                return userByUsername;
+                            }
+                        }
+                    }
+                }
             }
         }
-        return null;
+        return userDao.findAll();
     }
 }

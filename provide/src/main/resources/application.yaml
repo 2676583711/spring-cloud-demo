@@ -1,0 +1,25 @@
+server:
+  port: 9092
+spring:
+  application:
+    name: provide #指定服务名
+eureka:
+  instance:
+    appname: 提供-服务
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:9090/eureka/
+security:
+  basic:
+    enabled: false
+
+
+
+
+
+
+
+
+

@@ -69,13 +69,15 @@ function load() {
     });
 }
 
+var userid = '';
+
 function search() {
     let val = $("#search").val();
     let url = '/crud/ajaxQuery';
     console.log('search=', val)
     $.ajax({
         url: url,
-        data: val,
+        data: {username: val},
         type: 'get',
         dataType: "json",
         success: function (result) {

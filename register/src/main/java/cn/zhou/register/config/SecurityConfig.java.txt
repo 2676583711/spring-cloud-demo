@@ -1,0 +1,33 @@
+package cn.zhou.register.config;
+
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    /**
+     * 只需通过Spring -boot-starter- security将Spring Security添加到服务路径中，
+     * 就可以保护Eureka服务。
+     * 默认情况下，当Spring Security位于类路径上时，
+     * 它将要求在每次向应用程序发送请求时都发送一个有效的CSRF令牌。
+     * Eureka客户机通常不会拥有一个有效的跨站点请求伪造令牌(CSRF)，
+     * 您需要禁用/ Eureka /**端点的这个请求
+     *
+     * @param http
+     * @throws Exception
+     */
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().ignoringAntMatchers("/eureka/**");
+        super.configure(http);
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        super.configure(auth);
+    }
+
+
+}

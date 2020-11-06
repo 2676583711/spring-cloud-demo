@@ -64,11 +64,14 @@ public class UserController {
     Object ajaxQuery(User params) {
 //        @RequestParam(required = false)
         List<User> users = userService.findUser(params);
+
+        /*
         if (users != null) {
             return users;
         }
         users = userService.getAllUsers();
         users.forEach(user -> System.out.println("ajaxQuery:" + user));
+        */
         return users;
     }
 }

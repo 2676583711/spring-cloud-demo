@@ -58,7 +58,7 @@
 </table>
 
 </body>
-<script src="../static/jQuery-v2.0.2.js"></script>
-<script src="../static/user.js"></script>
+<script src="jQuery-v2.0.2.js"></script>
+<script src="user.js"></script>
 </html>
 
