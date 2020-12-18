@@ -16,7 +16,6 @@ public class CrudDemoApplication {
         SpringApplication.run(CrudDemoApplication.class, args);
 
         System.out.println("---------------CrudDemoApplication is start success------------------");
-
     }
 
 }
